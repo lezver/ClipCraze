@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --jaguar: #0c0117;
+  --wild-watermelon: #ff4a77;
+  --heliotrope: #a75df3;
+  --heliotrope29: #a75df34a;
+  --silver: #c5c5c5;
+  --dodger-blue: #13b8ff;
+  --dodger-blue29: #13b8ff3a;
+  --transparent: #00000000;
+
+  --lg-1: linear-gradient(135deg, #5bdbfd, #7375ff);
+
+  --lg-2: linear-gradient(to right, #5bdbfd 15%, #7375ff, #df93ff);
+
+  --custom-shadow: 0 4px 16px 1px #00000040;
+  --custom-shadow-inset: 4px 8px 12px 6px var(--heliotrope29) inset;
+}
+
+@theme inline {
+  /* colors */
+  --color-white: var(--white);
+  --color-black: var(--black);
+  --color-jaguar: var(--jaguar);
+  --color-wild-watermelon: var(--wild-watermelon);
+  --color-heliotrope: var(--heliotrope);
+  --color-silver: var(--silver);
+  --color-dodger-blue: var(--dodger-blue);
+
+  /* background-image */
+  --background-image-lg0: var(--lg-0);
+  --background-image-lg1: var(--lg-1);
+  --background-image-lg2: var(--lg-2);
+
+  /* fonts */
+
+  --font-raleway: var(--font-raleway);
+  --font-manrope: var(--font-manrope);
+  --font-sansation: var(--font-sansation);
+
+  /* shadow */
+
+  --shadow-inset-custom: var(--custom-shadow-inset);
+  --shadow-custom: var(--custom-shadow);
+
+  /* breakpoint */
+
+  --breakpoint-sm: 30rem;
+  --breakpoint-md: 36rem;
+  --breakpoint-lg: 48rem;
+  --breakpoint-xl: 68.75rem;
+  --breakpoint-2xl: 75rem;
+}
+
+@layer components {
+  .custom-transition-hover {
+    @apply transition hover:opacity-80;
+  }
+}
+
+@layer utilities {
+  .main-radials {
+    background: radial-gradient(
+      circle at 100% 45%,
+      var(--heliotrope29) 0%,
+      transparent 40%
+    );
+  }
+
+  .materials-image-fade {
+    background:
+      linear-gradient(
+        to right,
+        var(--transparent),
+        var(--jaguar) 25%,
+        var(--jaguar) 64%,
+        var(--transparent)
+      ),
+      url("/materials.webp") no-repeat left center/contain;
+  }
+
+  @media (max-width: 68.74rem) {
+    .main-radials {
+      background:
+        radial-gradient(
+          circle at 100% 32%,
+          var(--dodger-blue29) 0%,
+          transparent 13%
+        ),
+        radial-gradient(
+          circle at 0% 16%,
+          var(--dodger-blue29) 0%,
+          transparent 13%
+        );
+    }
+
+    .materials-image-fade {
+      background:
+        radial-gradient(
+          circle at 0% 0%,
+          var(--heliotrope29) 0%,
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 100% 100%,
+          var(--dodger-blue29) 0%,
+          transparent 35%
+        ),
+        var(--jaguar);
+    }
+  }
+
+  @media (max-width: 47.99rem) {
+    .modal-wrapper-radials {
+      background:
+        radial-gradient(
+          circle at 0% 35%,
+          var(--dodger-blue29) 0%,
+          transparent 50%
+        ),
+        radial-gradient(
+          circle at 100% 80%,
+          var(--heliotrope29) 0%,
+          transparent 50%
+        ),
+        var(--jaguar);
+    }
+  }
+
+  .overlay-radials {
+    background:
+      radial-gradient(
+        circle at 75% 120%,
+        var(--dodger-blue29) 0%,
+        transparent 35%
+      ),
+      radial-gradient(
+        circle at 25% 120%,
+        var(--heliotrope29) 0%,
+        transparent 35%
+      ),
+      var(--jaguar);
+  }
+
+  .item-radials {
+    background:
+      radial-gradient(
+        circle at bottom left,
+        var(--dodger-blue29) 0%,
+        transparent 70%
+      ),
+      radial-gradient(
+        circle at top right,
+        var(--heliotrope29) 0%,
+        transparent 40% 70%
+      ),
+      var(--jaguar);
+  }
+
+  .materials-bg-lg {
+    background: linear-gradient(135deg, #5bdbfd 25%, #7375ff 75%, #df93ff);
+  }
+
+  [data-content]::before {
+    content: attr(data-content);
+    background: linear-gradient(#7375ff, #5bdbfd);
+  }
+}
+
+body {
+  font-family: var(--font-raleway);
+}
