@@ -1,76 +1,82 @@
 {
-  "Header": {
-    "nav": ["Structure", "About me", "Advantages", "Reviews", "FAQ"],
-    "button": "Buy at a discount",
-    "title": "Title"
-  },
-  "Hero": {
-    "text": "Become famous in just 3 months without spending money on advertising! Learn the key to creating viral content and turn your ideas into millions of views.",
-    "subtitle": "From 0 to 100,000 in 90 days",
-    "title": "Secrets of viral videos",
-    "button": "Buy with a discount",
-    "discountBefore": "2000 UAH",
-    "discountAfter": "1000 UAH"
-  },
-  "Tariffs": {
-    "title": "Tariffs",
-    "listOfTariffs": [
-      {
-        "title": "Base",
-        "aboutList": ["Basic rate", "38 lessons"],
-        "button": "Buy"
-      },
-      {
-        "title": "Advanced",
-        "aboutList": [
-          "Basic",
-          "Additional lessons",
-          "48 lessons",
-          "Chat community for content creators"
-        ],
-        "button": "Buy"
-      },
-      {
-        "title": "Expert",
-        "aboutList": [
-          "Additional lessons",
-          "48 lessons",
-          "Chat community for content creators",
-          "Analysis of your page in video call format"
-        ],
-        "button": "Buy"
-      }
-    ]
-  },
-  "Materials": {
-    "title": "<span1>Learn how to create content that</span1> <span2>captivates your audience</span2>",
-    "subtitle": "Materials that can reach thousands of people",
-    "button": "Buy with a discount",
-    "blurText": "Secrets of viral videos"
-  },
-  "Form": {
-    "title": "Enter your details",
-    "email": "Email",
-    "nickname": "Telegram Nickname",
-    "name": "Name",
-    "button": "Send",
-    "submitting": "Shipping",
-    "info": "Sent to Telegram"
-  },
+	"Header": {
+		"nav": ["Structure", "About me", "Advantages", "Reviews", "FAQ"],
+		"button": "Buy at a discount",
+		"title": "Title"
+	},
+	"Hero": {
+		"text": "Become famous in just 3 months without spending money on advertising! Learn the key to creating viral content and turn your ideas into millions of views.",
+		"subtitle": "From 0 to 100,000 in 90 days",
+		"title": "Secrets of viral videos",
+		"button": "Buy with a discount",
+		"discountBefore": "2000 UAH",
+		"discountAfter": "1000 UAH"
+	},
+	"Tariffs": {
+		"title": "Tariffs",
+		"listOfTariffs": [
+			{
+				"title": "Base",
+				"aboutList": ["Basic rate", "38 lessons"],
+				"button": "Buy"
+			},
+			{
+				"title": "Advanced",
+				"aboutList": [
+					"Basic",
+					"Additional lessons",
+					"48 lessons",
+					"Chat community for content creators"
+				],
+				"button": "Buy"
+			},
+			{
+				"title": "Expert",
+				"aboutList": [
+					"Additional lessons",
+					"48 lessons",
+					"Chat community for content creators",
+					"Analysis of your page in video call format"
+				],
+				"button": "Buy"
+			}
+		]
+	},
+	"Materials": {
+		"title": "<span1>Learn how to create content that</span1> <span2>captivates your audience</span2>",
+		"subtitle": "Materials that can reach thousands of people",
+		"button": "Buy with a discount",
+		"blurText": "Secrets of viral videos"
+	},
+	"Form": {
+		"title": "Enter your details",
+		"email": "Email",
+		"nickname": "Telegram Nickname",
+		"name": "Name",
+		"button": "Send",
+		"submitting": "Shipping",
+		"info": "Sent to Telegram"
+	},
 
-  "Structure": {
-    "title": "Structure"
-  },
-  "About": {
-    "title": "About"
-  },
-  "Advantages": {
-    "title": "Advantages"
-  },
-  "Reviews": {
-    "title": "Reviews"
-  },
-  "Faq": {
-    "title": "Faq"
-  }
+	"NotFound": {
+		"title": "Page not found",
+		"subtitle": "Return to the main page",
+		"button": "Return"
+	},
+
+	"Structure": {
+		"title": "Structure"
+	},
+	"About": {
+		"title": "About"
+	},
+	"Advantages": {
+		"title": "Advantages"
+	},
+	"Reviews": {
+		"title": "Reviews"
+	},
+	"Faq": {
+		"title": "Faq"
+	}
 }
