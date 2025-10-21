@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+// import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Container from "../ui/Container";
 import { FC } from "react";
@@ -9,6 +9,7 @@ import Button from "../ui/Button";
 import { useModal } from "@/providers/ModalProvider";
 import Form from "./Form";
 import TitleH1 from "../ui/TitleH1";
+import Image from "next/image";
 
 const Hero: FC = () => {
 	const t = useTranslations("Hero");
@@ -19,15 +20,24 @@ const Hero: FC = () => {
 		<section className="pt-3 xl:pt-[27px] pb-[66px] xl:pb-25 relative hero-bg">
 			<Container>
 				<div className="grid 2xl:grid-cols-[57.5%_1fr] 2xl:gap-y-[42px] 2xl:gap-x-10 2xl:relative">
-					<picture className="mx-auto rounded-2xl overflow-hidden">
-						<source srcSet="/hero1.webp" media="(min-width:36rem)" />
-						<source srcSet="/hero2.webp" media="(max-width:35.99rem)" />
-						<img
-							className="w-[313px] h-[356px] md:w-[664px] md:h-[466px] aspect-auto object-cover"
+					<div className="mx-auto 2xl:mx-0">
+						<Image
 							src="/hero1.webp"
-							alt="heroImg"
+							alt={t("imageAlt")}
+							width={664}
+							height={466}
+							className="hidden md:block rounded-2xl"
+							priority={true}
 						/>
-					</picture>
+						<Image
+							src="/hero2.webp"
+							alt={t("imageAlt")}
+							width={313}
+							height={356}
+							className="md:hidden rounded-2xl"
+							priority={true}
+						/>
+					</div>
 
 					<div className="z-1 flex flex-col items-center 2xl:items-start 2xl:gap-y-4 2xl:absolute 2xl:bottom-3 2xl:right-0 2xl:max-w-138 w-full text-center 2xl:text-left -mt-20 mb-8 2xl:mb-0">
 						<h2 className="text-[21px] lg:text-3xl font-bold bg-lg2 bg-clip-text text-transparent">

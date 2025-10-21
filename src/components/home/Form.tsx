@@ -13,13 +13,6 @@ interface FormProps {
 	isOpen?: boolean;
 }
 
-interface FormErrors {
-	nameEmpty: boolean;
-	nicknameEmpty: boolean;
-	emailEmpty: boolean;
-	emailInvalid: string | boolean;
-}
-
 interface FormInputs {
 	name: string;
 	nickname: string;
@@ -32,25 +25,17 @@ const Form = ({ onClose, isOpen }: FormProps) => {
 		nickname: "",
 		email: "",
 	});
-	const [errors, setErrors] = useState<FormErrors>({
-		emailEmpty: false,
-		nameEmpty: false,
-		nicknameEmpty: false,
-		emailInvalid: false,
-	});
-	const [isSubmitting, setIsSubmitting] = useState(false);
+
+	const [emailError, setEmailError] = useState<boolean>(false);
+
+	const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
 	const t = useTranslations("Form");
 
 	useEffect(() => {
 		if (isOpen) {
 			setFormData({ name: "", nickname: "", email: "" });
-			setErrors({
-				nameEmpty: false,
-				nicknameEmpty: false,
-				emailEmpty: false,
-				emailInvalid: false,
-			});
+			setEmailError(false);
 		}
 	}, [isOpen]);
 
@@ -61,30 +46,17 @@ const Form = ({ onClose, isOpen }: FormProps) => {
 	const handleInputChange = (input: string, value: string) => {
 		setFormData((prev) => ({ ...prev, [input]: value }));
 
-		setErrors((prev) => ({
-			...prev,
-			[`${input}Empty`]: !value.trim(),
-			...(input === "email" && value.trim()
-				? { emailInvalid: !isValidEmail(value) }
-				: {}),
-		}));
+		if (input === "email") {
+			setEmailError(!isValidEmail(value));
+		}
 	};
 
 	const submitForm = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		const newErrors: FormErrors = {
-			nameEmpty: !formData.name.trim(),
-			nicknameEmpty: !formData.nickname.trim(),
-			emailEmpty: !formData.email.trim(),
-			emailInvalid: formData.email.trim() && !isValidEmail(formData.email),
-		};
+		if (!formData.email.trim()) return;
 
-		setErrors(newErrors);
-
-		if (Object.values(newErrors).some((error) => error)) {
-			return;
-		}
+		if (emailError) return;
 
 		setIsSubmitting(true);
 
@@ -110,19 +82,18 @@ const Form = ({ onClose, isOpen }: FormProps) => {
 			<h2 className="text-white mb-9 text-2xl uppercase text-center font-bold">
 				{t("title")}
 			</h2>
+
 			<div className="flex flex-col gap-y-[18px] mb-[38px]">
 				{inputs.map((input, index) => (
 					<label
 						key={index}
 						className={clsx(
 							"bg-white rounded-[14px] px-5 py-[15px] flex transition",
-							errors[`${input}Empty` as keyof typeof errors] &&
-								"outline-wild-watermelon outline-4",
 							input === "email" &&
-								errors.emailEmpty &&
+								!formData.email.trim() &&
 								"relative before:content-['*'] before:text-wild-watermelon before:absolute before:left-14",
 							input === "email" &&
-								errors.emailInvalid &&
+								emailError &&
 								"outline-wild-watermelon outline-4"
 						)}
 					>
@@ -141,9 +112,10 @@ const Form = ({ onClose, isOpen }: FormProps) => {
 
 			<div className="p-[2px] flex bg-lg1 rounded-[14px] mt-auto">
 				<Button
-					className="flex-auto bg-white text-jaguar text-sm font-semibold py-[15px] rounded-[12px]"
+					className="flex-auto bg-white text-jaguar text-sm font-semibold py-[15px] rounded-[12px] disabled:opacity-10 disabled:cursor-default"
 					text={isSubmitting ? t("submitting") : t("button")}
 					typeButton={"submit"}
+					disabled={isSubmitting}
 				/>
 			</div>
 		</form>

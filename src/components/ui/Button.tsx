@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { FC } from "react";
 
 interface ButtonProps {
 	text?: string;
@@ -8,6 +7,7 @@ interface ButtonProps {
 	onClick?: () => void;
 	typeButton?: "button" | "submit" | "reset";
 	children?: React.ReactNode;
+	disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -17,6 +17,7 @@ const Button: React.FC<ButtonProps> = ({
 	onClick,
 	typeButton = "button",
 	children,
+	disabled = false,
 }) => (
 	<button
 		onClick={onClick}
@@ -27,6 +28,7 @@ const Button: React.FC<ButtonProps> = ({
 			className
 		)}
 		type={typeButton}
+		disabled={disabled}
 	>
 		{text}
 		{children}
