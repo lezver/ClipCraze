@@ -56,7 +56,8 @@
 		"name": "Name",
 		"button": "Send",
 		"submitting": "Shipping",
-		"info": "Sent to Telegram"
+		"info": "Sent to Telegram",
+		"error": "The Email field is empty."
 	},
 
 	"NotFound": {

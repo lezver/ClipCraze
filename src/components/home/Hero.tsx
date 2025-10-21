@@ -22,7 +22,7 @@ const Hero: FC = () => {
 				<div className="grid 2xl:grid-cols-[57.5%_1fr] 2xl:gap-y-[42px] 2xl:gap-x-10 2xl:relative">
 					<div className="mx-auto 2xl:mx-0">
 						<Image
-							src="/hero1.webp"
+							src="/hero1.jpeg"
 							alt={t("imageAlt")}
 							width={664}
 							height={466}
@@ -30,7 +30,7 @@ const Hero: FC = () => {
 							priority={true}
 						/>
 						<Image
-							src="/hero2.webp"
+							src="/hero2.jpeg"
 							alt={t("imageAlt")}
 							width={313}
 							height={356}

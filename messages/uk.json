@@ -56,7 +56,8 @@
 		"name": "Ім’я",
 		"button": "Відправити",
 		"submitting": "Відправка",
-		"info": "Відправлено у Telegram"
+		"info": "Відправлено у Telegram",
+		"error": "Поле Email порожнє."
 	},
 	"NotFound": {
 		"title": "Сторінку не знайдено",

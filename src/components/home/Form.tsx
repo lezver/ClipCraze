@@ -54,7 +54,11 @@ const Form = ({ onClose, isOpen }: FormProps) => {
 	const submitForm = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		if (!formData.email.trim()) return;
+		if (!formData.email.trim()) {
+			setEmailError(true);
+			toast.error("Email is EMPTY!");
+			return;
+		}
 
 		if (emailError) return;
 
