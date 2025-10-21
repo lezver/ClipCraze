@@ -13,70 +13,70 @@ import { ModalProvider } from "@/providers/ModalProvider";
 import { Toaster } from "react-hot-toast";
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+	return routing.locales.map((locale) => ({ locale }));
 }
 
 const raleway = Raleway({
-  subsets: ["latin"],
-  variable: "--font-raleway",
-  weight: ["400", "500", "600", "700", "800", "900"],
+	subsets: ["latin"],
+	variable: "--font-raleway",
+	weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
-  weight: ["400", "500", "600", "700", "800"],
+	subsets: ["latin"],
+	variable: "--font-manrope",
+	weight: ["400", "500", "600", "700", "800"],
 });
 
 const sansation = Sansation({
-  subsets: ["latin"],
-  variable: "--font-sansation",
-  weight: ["400", "700"],
+	subsets: ["latin"],
+	variable: "--font-sansation",
+	weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Aleko Sokurashvili",
-  description: "Test",
+	title: "Clip Craze",
+	description: "Test",
 };
 
 type RootLayoutProps = {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+	children: React.ReactNode;
+	params: Promise<{ locale: string }>;
 };
 
 export default async function RootLayout({
-  children,
-  params,
+	children,
+	params,
 }: RootLayoutProps) {
-  const { locale } = await params;
+	const { locale } = await params;
 
-  if (!hasLocale(routing.locales, locale)) {
-    notFound();
-  }
+	if (!hasLocale(routing.locales, locale)) {
+		notFound();
+	}
 
-  setRequestLocale(locale);
+	setRequestLocale(locale);
 
-  return (
-    <html lang={locale}>
-      <body
-        className={clsx(
-          "bg-jaguar grid min-h-screen grid-rows-[auto_1fr_auto] text-white",
-          raleway.variable,
-          manrope.variable,
-          sansation?.variable,
-        )}
-      >
-        <NextIntlClientProvider>
-          <ModalProvider>
-            <Header />
+	return (
+		<html lang={locale}>
+			<body
+				className={clsx(
+					"bg-jaguar grid min-h-screen grid-rows-[auto_1fr_auto] text-white",
+					raleway.variable,
+					manrope.variable,
+					sansation?.variable
+				)}
+			>
+				<NextIntlClientProvider>
+					<ModalProvider>
+						<Header />
 
-            <Main>{children}</Main>
+						<Main>{children}</Main>
 
-            <Footer />
-            <Toaster />
-          </ModalProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
-  );
+						<Footer />
+						<Toaster />
+					</ModalProvider>
+				</NextIntlClientProvider>
+			</body>
+		</html>
+	);
 }
