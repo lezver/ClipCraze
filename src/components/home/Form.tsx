@@ -56,7 +56,7 @@ const Form = ({ onClose, isOpen }: FormProps) => {
 
 		if (!formData.email.trim()) {
 			setEmailError(true);
-			toast.error("Email is EMPTY!");
+			toast.error(t("error"));
 			return;
 		}
 
