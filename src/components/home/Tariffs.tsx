@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import Container from "../ui/Container";
 import clsx from "clsx";
@@ -8,6 +8,7 @@ import Button from "../ui/Button";
 import { useModal } from "@/providers/ModalProvider";
 import Form from "./Form";
 import { getPosts, Post } from "@/api/posts";
+import { PuffLoader } from "react-spinners";
 
 interface Tariff {
 	title: string;
@@ -35,6 +36,7 @@ const Tariffs = () => {
 	const [posts, setPosts] = useState<Post[]>([]);
 	const [start, setStart] = useState<number>(0);
 	const [hasMore, setHasMore] = useState(true);
+	const [loading, setLoading] = useState(false);
 	const postsPerPage = 3;
 
 	const t = useTranslations("Tariffs");
@@ -44,6 +46,7 @@ const Tariffs = () => {
 	const { openModal } = useModal();
 
 	const loadPosts = async (startIndex: number, limit: number) => {
+		setLoading(true);
 		const newPosts = await getPosts(limit, startIndex);
 
 		if (newPosts.length < limit) {
@@ -52,6 +55,8 @@ const Tariffs = () => {
 
 		setPosts((prev) => [...prev, ...newPosts]);
 		setStart((prev) => prev + limit);
+
+		setLoading(false);
 	};
 
 	useEffect(() => {
@@ -181,12 +186,22 @@ const Tariffs = () => {
 						))}
 					</ul>
 
-					{hasMore && (
-						<Button
-							onClick={handleLoadMore}
-							className="custom-transition-hover hover:cursor-pointer px-[31.5px] py-[10px] bg-lg2 rounded-full font-semibold text-base lg:text-lg mx-auto"
-							text="LoadMore"
+					{loading ? (
+						<PuffLoader
+							color={"white"}
+							cssOverride={{ margin: "0 auto" }}
+							size={164}
+							aria-label="Loading Spinner"
+							data-testid="loader"
 						/>
+					) : (
+						hasMore && (
+							<Button
+								onClick={handleLoadMore}
+								className="custom-transition-hover hover:cursor-pointer px-[31.5px] py-[10px] bg-lg2 rounded-full font-semibold text-base lg:text-lg mx-auto"
+								text="LoadMore"
+							/>
+						)
 					)}
 				</div>
 			</Container>
